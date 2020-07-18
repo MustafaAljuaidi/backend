@@ -132,6 +132,7 @@ server.get(
 // Connecting to port (range 300 - 9999)
 // The IP address of servers not connected to the world wide web = http://127.0.0.1:8080 (aka http://localhost:8080)
 server.listen(
-    8080, ()=>{
+    process.env.PORT || 8080, ()=>{
         console.log('You are connected!');
-} )
+    }
+);
