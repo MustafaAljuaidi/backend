@@ -24,5 +24,34 @@ router.post(
     }
 );
 
+router.post(
+    '/update',
+    (req, res) => {
+        const formData = {
+            quantity: req.body.quantity,
+            _id: req.body._id
+        };
+
+        ProductsModel.findOneAndUpdate(
+            {_id: formData._id},    // search criteria
+            {quantity: formData.quantity},  // the keys & values to update
+            {}, // options, if any
+            (err, document) => {
+                if(err) {
+                    console.log(err);
+                } else {
+                    res.json(
+                        {
+                            message: 'Product updated',
+                            document: document
+                        }
+                    )
+                }
+
+            }
+        )
+    }
+)
+
 // Export the router
 module.exports = router;

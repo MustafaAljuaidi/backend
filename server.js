@@ -7,14 +7,18 @@ const mongoose = require('mongoose');
 // Importing body-parser
 const bodyParser = require('body-parser');
 
+// Import dotenv
+require('dotenv').config();
+
     // Importing passport
     const passport = require('passport');
     // Importing the strategies
     const JwtStrategy = require('passport-jwt').Strategy;
     const ExtractJwt = require('passport-jwt').ExtractJwt;
-    const secret = "s3cr3t100";
 
     const cors = require('cors');
+
+    const secret = process.env.SECRET;
 
     const UsersModel = require("./models/UsersModel");
 
@@ -66,7 +70,7 @@ server.use(cors());
 // Invoking passportJwt and pass the password package as argument
 passportJwt(passport);
 
-const dbURL = "mongodb+srv://admin1:Mustafa1@cluster0-9gbs4.mongodb.net/test?retryWrites=true&w=majority"
+const dbURL = process.env.DB_URL;
 
 mongoose.connect(
     dbURL,

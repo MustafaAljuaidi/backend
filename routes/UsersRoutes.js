@@ -2,7 +2,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const secret = "s3cr3t100";
+require('dotenv').config();
+const secret = process.env.SECRET;
 
 const UsersModel = require('../models/UsersModel.js');
 
@@ -41,7 +42,7 @@ router.post(
                                 } 
                                 // Otherwise, send success message
                                 else {
-                                    res.json({message: "User has been saved!"})
+                                    res.json({message: "User has been saved"})
                                 }
                             }
                         );

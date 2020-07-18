@@ -17,7 +17,7 @@ router.post(
         const newEmailsModel = new EmailsModel(formData);
         newEmailsModel.save();
 
-        res.send('Email has been saved!');
+        res.send('Email has been saved');
     }
 );
 
